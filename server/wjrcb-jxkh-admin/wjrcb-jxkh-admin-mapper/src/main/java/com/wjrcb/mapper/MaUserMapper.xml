@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjrcb.mapper.MaUserMapper" >
+  <resultMap id="BaseResultMap" type="com.wjrcb.pojo.MaUser" >
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="POST_ID" property="postId" jdbcType="VARCHAR" />
+    <result column="DEGREE_ID" property="degreeId" jdbcType="VARCHAR" />
+    <result column="EDU_LVL" property="eduLvl" jdbcType="VARCHAR" />
+    <result column="WORK_YEAR" property="workYear" jdbcType="VARCHAR" />
+    <result column="EMPLOYEE_ATTR" property="employeeAttr" jdbcType="VARCHAR" />
+    <result column="DEPARTMENT_ID" property="departmentId" jdbcType="VARCHAR" />
+    <result column="LEAD_ORG_FLG" property="leadOrgFlg" jdbcType="VARCHAR" />
+    <result column="PASSWD" property="passwd" jdbcType="VARCHAR" />
+    <result column="LAST_UPDATE_DT" property="lastUpdateDt" jdbcType="VARCHAR" />
+    <result column="LAST_UPDATE_USER" property="lastUpdateUser" jdbcType="VARCHAR" />
+    <result column="EMAIL_NAME" property="emailName" jdbcType="VARCHAR" />
+    <result column="IS_VALID" property="isValid" jdbcType="VARCHAR" />
+    <result column="PASSWORD_POLICY_CDE" property="passwordPolicyCde" jdbcType="VARCHAR" />
+    <result column="LAST_CHANGE_PWD_TIME" property="lastChangePwdTime" jdbcType="TIMESTAMP" />
+    <result column="WRONG_PWD_NUM" property="wrongPwdNum" jdbcType="DECIMAL" />
+    <result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="IS_LOCKED" property="isLocked" jdbcType="VARCHAR" />
+    <result column="ACC_ORG" property="accOrg" jdbcType="VARCHAR" />
+    <result column="LOGIN_ID" property="loginId" jdbcType="VARCHAR" />
+    <result column="C_POST" property="cPost" jdbcType="VARCHAR" />
+    <result column="POST_LEVEL" property="postLevel" jdbcType="VARCHAR" />
+    <result column="MOBILE_NO" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="ENTRY_DATE" property="entryDate" jdbcType="VARCHAR" />
+    <result column="LEAVE_DATE" property="leaveDate" jdbcType="VARCHAR" />
+    <result column="EMPLOY_TYPE" property="employType" jdbcType="VARCHAR" />
+    <result column="PA_TYPE" property="paType" jdbcType="VARCHAR" />
+    <result column="POST_TYPE" property="postType" jdbcType="VARCHAR" />
+    <result column="SENIORITY" property="seniority" jdbcType="DECIMAL" />
+    <result column="NEW_DATE" property="newDate" jdbcType="VARCHAR" />
+    <result column="POST" property="post" jdbcType="VARCHAR" />
+    <result column="GROUP_TYPE" property="groupType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_NAME, ORG_ID, POST_ID, DEGREE_ID, EDU_LVL, WORK_YEAR, EMPLOYEE_ATTR, 
+    DEPARTMENT_ID, LEAD_ORG_FLG, PASSWD, LAST_UPDATE_DT, LAST_UPDATE_USER, EMAIL_NAME, 
+    IS_VALID, PASSWORD_POLICY_CDE, LAST_CHANGE_PWD_TIME, WRONG_PWD_NUM, LAST_LOGIN_TIME, 
+    IS_LOCKED, ACC_ORG, LOGIN_ID, C_POST, POST_LEVEL, MOBILE_NO, ENTRY_DATE, LEAVE_DATE, 
+    EMPLOY_TYPE, PA_TYPE, POST_TYPE, SENIORITY, NEW_DATE, POST, GROUP_TYPE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wjrcb.pojo.MaUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from MA_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.wjrcb.pojo.MaUserExample" >
+    delete from MA_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wjrcb.pojo.MaUser" >
+    insert into MA_USER (USER_ID, USER_NAME, ORG_ID, 
+      POST_ID, DEGREE_ID, EDU_LVL, 
+      WORK_YEAR, EMPLOYEE_ATTR, DEPARTMENT_ID, 
+      LEAD_ORG_FLG, PASSWD, LAST_UPDATE_DT, 
+      LAST_UPDATE_USER, EMAIL_NAME, IS_VALID, 
+      PASSWORD_POLICY_CDE, LAST_CHANGE_PWD_TIME, 
+      WRONG_PWD_NUM, LAST_LOGIN_TIME, IS_LOCKED, 
+      ACC_ORG, LOGIN_ID, C_POST, 
+      POST_LEVEL, MOBILE_NO, ENTRY_DATE, 
+      LEAVE_DATE, EMPLOY_TYPE, PA_TYPE, 
+      POST_TYPE, SENIORITY, NEW_DATE, 
+      POST, GROUP_TYPE)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
+      #{postId,jdbcType=VARCHAR}, #{degreeId,jdbcType=VARCHAR}, #{eduLvl,jdbcType=VARCHAR}, 
+      #{workYear,jdbcType=VARCHAR}, #{employeeAttr,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, 
+      #{leadOrgFlg,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR}, #{lastUpdateDt,jdbcType=VARCHAR}, 
+      #{lastUpdateUser,jdbcType=VARCHAR}, #{emailName,jdbcType=VARCHAR}, #{isValid,jdbcType=VARCHAR}, 
+      #{passwordPolicyCde,jdbcType=VARCHAR}, #{lastChangePwdTime,jdbcType=TIMESTAMP}, 
+      #{wrongPwdNum,jdbcType=DECIMAL}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{isLocked,jdbcType=VARCHAR}, 
+      #{accOrg,jdbcType=VARCHAR}, #{loginId,jdbcType=VARCHAR}, #{cPost,jdbcType=VARCHAR}, 
+      #{postLevel,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, #{entryDate,jdbcType=VARCHAR}, 
+      #{leaveDate,jdbcType=VARCHAR}, #{employType,jdbcType=VARCHAR}, #{paType,jdbcType=VARCHAR}, 
+      #{postType,jdbcType=VARCHAR}, #{seniority,jdbcType=DECIMAL}, #{newDate,jdbcType=VARCHAR}, 
+      #{post,jdbcType=VARCHAR}, #{groupType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wjrcb.pojo.MaUser" >
+    insert into MA_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="postId != null" >
+        POST_ID,
+      </if>
+      <if test="degreeId != null" >
+        DEGREE_ID,
+      </if>
+      <if test="eduLvl != null" >
+        EDU_LVL,
+      </if>
+      <if test="workYear != null" >
+        WORK_YEAR,
+      </if>
+      <if test="employeeAttr != null" >
+        EMPLOYEE_ATTR,
+      </if>
+      <if test="departmentId != null" >
+        DEPARTMENT_ID,
+      </if>
+      <if test="leadOrgFlg != null" >
+        LEAD_ORG_FLG,
+      </if>
+      <if test="passwd != null" >
+        PASSWD,
+      </if>
+      <if test="lastUpdateDt != null" >
+        LAST_UPDATE_DT,
+      </if>
+      <if test="lastUpdateUser != null" >
+        LAST_UPDATE_USER,
+      </if>
+      <if test="emailName != null" >
+        EMAIL_NAME,
+      </if>
+      <if test="isValid != null" >
+        IS_VALID,
+      </if>
+      <if test="passwordPolicyCde != null" >
+        PASSWORD_POLICY_CDE,
+      </if>
+      <if test="lastChangePwdTime != null" >
+        LAST_CHANGE_PWD_TIME,
+      </if>
+      <if test="wrongPwdNum != null" >
+        WRONG_PWD_NUM,
+      </if>
+      <if test="lastLoginTime != null" >
+        LAST_LOGIN_TIME,
+      </if>
+      <if test="isLocked != null" >
+        IS_LOCKED,
+      </if>
+      <if test="accOrg != null" >
+        ACC_ORG,
+      </if>
+      <if test="loginId != null" >
+        LOGIN_ID,
+      </if>
+      <if test="cPost != null" >
+        C_POST,
+      </if>
+      <if test="postLevel != null" >
+        POST_LEVEL,
+      </if>
+      <if test="mobileNo != null" >
+        MOBILE_NO,
+      </if>
+      <if test="entryDate != null" >
+        ENTRY_DATE,
+      </if>
+      <if test="leaveDate != null" >
+        LEAVE_DATE,
+      </if>
+      <if test="employType != null" >
+        EMPLOY_TYPE,
+      </if>
+      <if test="paType != null" >
+        PA_TYPE,
+      </if>
+      <if test="postType != null" >
+        POST_TYPE,
+      </if>
+      <if test="seniority != null" >
+        SENIORITY,
+      </if>
+      <if test="newDate != null" >
+        NEW_DATE,
+      </if>
+      <if test="post != null" >
+        POST,
+      </if>
+      <if test="groupType != null" >
+        GROUP_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null" >
+        #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeId != null" >
+        #{degreeId,jdbcType=VARCHAR},
+      </if>
+      <if test="eduLvl != null" >
+        #{eduLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="workYear != null" >
+        #{workYear,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeAttr != null" >
+        #{employeeAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="leadOrgFlg != null" >
+        #{leadOrgFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null" >
+        #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDt != null" >
+        #{lastUpdateDt,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateUser != null" >
+        #{lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="emailName != null" >
+        #{emailName,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordPolicyCde != null" >
+        #{passwordPolicyCde,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChangePwdTime != null" >
+        #{lastChangePwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wrongPwdNum != null" >
+        #{wrongPwdNum,jdbcType=DECIMAL},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isLocked != null" >
+        #{isLocked,jdbcType=VARCHAR},
+      </if>
+      <if test="accOrg != null" >
+        #{accOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="cPost != null" >
+        #{cPost,jdbcType=VARCHAR},
+      </if>
+      <if test="postLevel != null" >
+        #{postLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileNo != null" >
+        #{mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="entryDate != null" >
+        #{entryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="leaveDate != null" >
+        #{leaveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="employType != null" >
+        #{employType,jdbcType=VARCHAR},
+      </if>
+      <if test="paType != null" >
+        #{paType,jdbcType=VARCHAR},
+      </if>
+      <if test="postType != null" >
+        #{postType,jdbcType=VARCHAR},
+      </if>
+      <if test="seniority != null" >
+        #{seniority,jdbcType=DECIMAL},
+      </if>
+      <if test="newDate != null" >
+        #{newDate,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null" >
+        #{groupType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wjrcb.pojo.MaUserExample" resultType="java.lang.Integer" >
+    select count(*) from MA_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update MA_USER
+    <set >
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgId != null" >
+        ORG_ID = #{record.orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postId != null" >
+        POST_ID = #{record.postId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.degreeId != null" >
+        DEGREE_ID = #{record.degreeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eduLvl != null" >
+        EDU_LVL = #{record.eduLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workYear != null" >
+        WORK_YEAR = #{record.workYear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.employeeAttr != null" >
+        EMPLOYEE_ATTR = #{record.employeeAttr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentId != null" >
+        DEPARTMENT_ID = #{record.departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leadOrgFlg != null" >
+        LEAD_ORG_FLG = #{record.leadOrgFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passwd != null" >
+        PASSWD = #{record.passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdateDt != null" >
+        LAST_UPDATE_DT = #{record.lastUpdateDt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdateUser != null" >
+        LAST_UPDATE_USER = #{record.lastUpdateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailName != null" >
+        EMAIL_NAME = #{record.emailName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isValid != null" >
+        IS_VALID = #{record.isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passwordPolicyCde != null" >
+        PASSWORD_POLICY_CDE = #{record.passwordPolicyCde,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastChangePwdTime != null" >
+        LAST_CHANGE_PWD_TIME = #{record.lastChangePwdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.wrongPwdNum != null" >
+        WRONG_PWD_NUM = #{record.wrongPwdNum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lastLoginTime != null" >
+        LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isLocked != null" >
+        IS_LOCKED = #{record.isLocked,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accOrg != null" >
+        ACC_ORG = #{record.accOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginId != null" >
+        LOGIN_ID = #{record.loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPost != null" >
+        C_POST = #{record.cPost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postLevel != null" >
+        POST_LEVEL = #{record.postLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobileNo != null" >
+        MOBILE_NO = #{record.mobileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entryDate != null" >
+        ENTRY_DATE = #{record.entryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leaveDate != null" >
+        LEAVE_DATE = #{record.leaveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.employType != null" >
+        EMPLOY_TYPE = #{record.employType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paType != null" >
+        PA_TYPE = #{record.paType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postType != null" >
+        POST_TYPE = #{record.postType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seniority != null" >
+        SENIORITY = #{record.seniority,jdbcType=DECIMAL},
+      </if>
+      <if test="record.newDate != null" >
+        NEW_DATE = #{record.newDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.post != null" >
+        POST = #{record.post,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupType != null" >
+        GROUP_TYPE = #{record.groupType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update MA_USER
+    set USER_ID = #{record.userId,jdbcType=VARCHAR},
+      USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      ORG_ID = #{record.orgId,jdbcType=VARCHAR},
+      POST_ID = #{record.postId,jdbcType=VARCHAR},
+      DEGREE_ID = #{record.degreeId,jdbcType=VARCHAR},
+      EDU_LVL = #{record.eduLvl,jdbcType=VARCHAR},
+      WORK_YEAR = #{record.workYear,jdbcType=VARCHAR},
+      EMPLOYEE_ATTR = #{record.employeeAttr,jdbcType=VARCHAR},
+      DEPARTMENT_ID = #{record.departmentId,jdbcType=VARCHAR},
+      LEAD_ORG_FLG = #{record.leadOrgFlg,jdbcType=VARCHAR},
+      PASSWD = #{record.passwd,jdbcType=VARCHAR},
+      LAST_UPDATE_DT = #{record.lastUpdateDt,jdbcType=VARCHAR},
+      LAST_UPDATE_USER = #{record.lastUpdateUser,jdbcType=VARCHAR},
+      EMAIL_NAME = #{record.emailName,jdbcType=VARCHAR},
+      IS_VALID = #{record.isValid,jdbcType=VARCHAR},
+      PASSWORD_POLICY_CDE = #{record.passwordPolicyCde,jdbcType=VARCHAR},
+      LAST_CHANGE_PWD_TIME = #{record.lastChangePwdTime,jdbcType=TIMESTAMP},
+      WRONG_PWD_NUM = #{record.wrongPwdNum,jdbcType=DECIMAL},
+      LAST_LOGIN_TIME = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      IS_LOCKED = #{record.isLocked,jdbcType=VARCHAR},
+      ACC_ORG = #{record.accOrg,jdbcType=VARCHAR},
+      LOGIN_ID = #{record.loginId,jdbcType=VARCHAR},
+      C_POST = #{record.cPost,jdbcType=VARCHAR},
+      POST_LEVEL = #{record.postLevel,jdbcType=VARCHAR},
+      MOBILE_NO = #{record.mobileNo,jdbcType=VARCHAR},
+      ENTRY_DATE = #{record.entryDate,jdbcType=VARCHAR},
+      LEAVE_DATE = #{record.leaveDate,jdbcType=VARCHAR},
+      EMPLOY_TYPE = #{record.employType,jdbcType=VARCHAR},
+      PA_TYPE = #{record.paType,jdbcType=VARCHAR},
+      POST_TYPE = #{record.postType,jdbcType=VARCHAR},
+      SENIORITY = #{record.seniority,jdbcType=DECIMAL},
+      NEW_DATE = #{record.newDate,jdbcType=VARCHAR},
+      POST = #{record.post,jdbcType=VARCHAR},
+      GROUP_TYPE = #{record.groupType,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
