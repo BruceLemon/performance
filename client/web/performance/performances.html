@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>绩效考核</title>
+    <!--开发用framework7.ios.css，发布用framework7.ios.min.css-->
+    <!--<link rel="stylesheet" href="vendor/framework7/css/framework7.ios.css">-->
+    <link rel="stylesheet" href="vendor/framework7/css/framework7.ios.min.css">
+
+    <link rel="stylesheet" href="vendor/framework7/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="vendor/framework7/css/framework7-icons.css">
+    <!--F7demo样式-->
+    <link rel="stylesheet" href="vendor/framework7/css/kitchen-sink.css">
+    <!-- 自定义样式-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <link rel="stylesheet" href="css/dropkick.css">
+    <script src="js/page/role1.js"></script>
+</head>
+<body class="">
+<!-- Status bar overlay for fullscreen mode-->
+<div id="statusbar" class="statusbar-overlay"></div>
+<!-- Panels overlay-->
+<div class="panel-overlay"></div>
+<!-- Left panel with reveal effect-->
+<div class="panel panel-left panel-reveal">
+    <div class="content-block">
+        <p>Left panel content goes here</p>
+    </div>
+</div>
+<!-- Right panel with cover effect-->
+<div class="panel panel-right panel-cover">
+    <div class="content-block">
+        <p>Right panel content goes here</p>
+    </div>
+</div>
+
+<div id="rootViewPerformance" class="views tabs toolbar-through">
+    <div id="viewPerformance" class="view view-main tab active">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a id="btnSide" class="link sideIcon" style="" href="javascript:void(0);" onclick="window.AppOp.openSideMenu()">
+                        <!--<img src="images/homePage/side.png" style="height: 55%;width: 55%">-->
+                    </a>
+                    <!--<a id="backId" href="#" class="back link" ><i class="icon icon-back"></i><span>返回</span></a>-->
+                </div>
+                <div class="center sliding" style="text-align: center">绩效考核</div>
+                <div class="right">
+                    <a id="sjdetail" href="#" class="link icon-only" style="display: none">
+                        <i class="icon icon-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pages navbar-through toolbar-through">
+            <div id="salaryApproveDetailPage" data-page="salaryApproveDetail" class="page">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a id="backId" href="#" class="back link"><i class="icon icon-back"></i><span>返回</span></a>
+                        </div>
+                        <div id="main_navbar_title" class="center sliding">绩效考核</div>
+                        <div id="main_navbar_menu" class="right">
+                            <a id="salaryCloseAndOpenBtn" href="#" class="link">
+                                <span class="spread"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-content" style="overflow-x: hidden;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--库引用-->
+<script type="text/javascript" src="vendor/jquery/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="vendor/jquery/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="vendor/jquery/js/jquery.transit.min.js"></script>
+<!--<script type="text/javascript" src="vendor/interact/js/interact.js"></script>-->
+<script type='text/javascript' src="vendor/jquery/js/jquery.dropkick-min.js"></script>
+
+<script type="text/javascript" src="vendor/framework7/js/framework7.min.js"></script>
+<!--<script type="text/javascript" src="vendor/framework7/js/framework7.js"></script>-->
+<!--<script type="text/javascript" src="vendor/calculatorjs/dist/calc.min.js"></script>-->
+<script type="text/javascript" src="vendor/underscore/underscore-min.js"></script>
+<script type="text/javascript" src="vendor/async/async.min.js"></script>
+<!--主程序-->
+<script type="text/javascript" src="js/constants.js"></script>
+<script type="text/javascript" src="js/appOp.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/netManager.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<!--页面-->
+<script type="text/javascript" src="js/performances.js"></script>
+<script type="text/javascript" src="js/page/role1.js"></script>
+<script type="text/javascript" src="js/page/role2.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+    window.Performances.initPfm();
+</script>
