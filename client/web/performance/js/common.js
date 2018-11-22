@@ -1,7 +1,6 @@
 //常用工具类
 (function () {
     "use strict";
-
     function Common() {
         this.currencys = {"11": "人民币", "95": "本外币"};
         this.isChoose = {"0": "是", "1": "否"};//是否选中
@@ -178,7 +177,7 @@
             if (this.arr && this.arr[dom]) {
                 var len = this.arr[dom].length;
                 for (var i = 0; i < len; i++) {
-                    if (this.arr[dom][i].name === name) {
+                    if (this.arr[dom][i] !=null && this.arr[dom][i].name === name) {
                         this.arr[dom].splice(i, 1);
                         break;
                     }
@@ -189,7 +188,7 @@
             if (this.arr && this.arr[dom]) {
                 var len = this.arr[dom].length;
                 for (var i = 0; i < len; i++) {
-                    if (this.arr[dom][i].hasOwnProperty("name") && this.arr[dom][i].name === name) {
+                    if (this.arr[dom][i] !== undefined && this.arr[dom][i].hasOwnProperty("name") && this.arr[dom][i].name === name) {
                         this.arr[dom][i].callback();
                     }
                 }
@@ -205,7 +204,7 @@
                 }
                 var len = this.arr[dom].length;
                 for (var i = 0; i < len; i++) {
-                    if (this.arr[dom][i].hasOwnProperty("name") && this.arr[dom][i].name === name) {
+                    if (this.arr[dom][i] !== undefined && this.arr[dom][i].hasOwnProperty("name") && this.arr[dom][i].name === name) {
                         this.arr[dom][i].callback();
                         break;
                     }
@@ -272,20 +271,7 @@
                 }
             }
         },
-        dealJson: function (jsonData) {
-            for (var key in jsonData) {
-                var data = jsonData[key];
-                if (data.leafType === 1) {
-                    jsonData.slice(key, 1);
-                    // delete jsonData[key];
-                }
-                log("------ key:" + key + " jsonData:" + data);
-                // if (o[i] !== null && typeof(o[i]) === "object") {
-                //     window.Common.traverse(o[i], func);
-                // }
-            }
-        },
-        //F7通知
+       //F7通知
         notice: function () {
             var notification = myApp.addNotification({
                 title: 'Framework7',
@@ -293,265 +279,6 @@
             });
             myApp.closeNotification(notification);
         },
-        //图形的放大缩小以及拖拽
-        initScaleAndMoveAction: function (areaId, elementId) {
-            // try {
-            if (window[areaId + "_scale"] == null) {
-                window[areaId + "_scale"] = 1;
-            }
-            window.interactScrollEnabled = true;
-            var lastPageY = -10000;
-            var lastPageX = -10000;
-            window.interactTimer = 0;
-            var interactObj;
-            window[areaId + "_scroll"] = false;
-            var lastStep = 0;
-            var lastDragMoveDx = 0;
-            var lastDragMoveDy = 0;
-            var lastDragMoveVx = 0;
-            var lastDragMoveVy = 0;
-            var lastDragMoveTarget = null;
-            var gestureArea = $("#" + areaId);
-            var getCurrentPage = function () {
-                if(pad.toString() === "true"){
-                    var currentView = window.MBIPadManager.getCurrView();
-                }else{
-                    var currentView = window.MBIManager.getCurrView();
-                }
-                var activePage = currentView.activePage;
-                var currentPage = $$(".page-content", activePage.container);
-                return currentPage;
-            }
-            var scaleElement = $("#" + elementId);
-            var gestureAreaElement = document.getElementById(areaId);
-            var scaleElementElement = document.getElementById(elementId);
-            if (_.isNull(gestureAreaElement) || _.isNull(scaleElementElement)) {
-                return;
-            }
-            window[areaId + "_scaleElementWidth"] = scaleElement.width();
-            window[areaId + "_scaleElementHeight"] = scaleElement.height();
-            window[areaId + "_gestureAreaWidth"] = gestureArea.width();
-            window[areaId + "_gestureAreaHeight"] = gestureArea.height();
-            scaleElementElement.style.webkitTransform = scaleElementElement.style.transform = 'scale(' + window[areaId + "_scale"] + ')';
-            var scrollDisable = function () {
-                //alert("scrollDisable");
-                window.interactScrollEnabled = false;
-                clearTimeout(window.interactTimer);
-                window.interactTimer = setTimeout(function () {
-                    window.interactScrollEnabled = true;
-                }, 4000);
-            }
-            var scrollEnable = function () {
-                window.interactScrollEnabled = true;
-                clearTimeout(window.interactTimer);
-            }
-            var lastScrollTop = 0;
-            var dragMove = function (dx, dy) {
-                //return;
-                if (lastDragMoveTarget) {
-                    var lastX = parseFloat(lastDragMoveTarget.getAttribute('data-x'));
-                    var lastY = parseFloat(lastDragMoveTarget.getAttribute('data-y'));
-                    var x = (parseFloat(lastDragMoveTarget.getAttribute('data-x')) || 0) + dx;
-                    var y = (parseFloat(lastDragMoveTarget.getAttribute('data-y')) || 0) + dy;
-
-                    if (x + scaleElement.width() / 2 - (scaleElement.width() / 2) * window[areaId + "_scale"] > 0) {
-                        x = ((scaleElement.width() / 2) * window[areaId + "_scale"]) - scaleElement.width() / 2;
-                    }
-                    else if ((x + scaleElement.width() / 2 + ((scaleElement.width() / 2) * window[areaId + "_scale"]) < gestureArea.width())) {
-                        x = gestureArea.width() - (scaleElement.width() / 2 + ((scaleElement.width() / 2) * window[areaId + "_scale"]));
-                    }
-                    window[areaId + "_scroll"] = false;
-                    if (y + scaleElement.height() / 2 - (scaleElement.height() / 2) * window[areaId + "_scale"] > 0) {
-                        y = ((scaleElement.height() / 2) * window[areaId + "_scale"]) - scaleElement.height() / 2;
-                        if (Math.abs(dy) > Math.abs(dx)) {
-                            window[areaId + "_scroll"] = true;
-                        }
-                    }
-                    else if ((y + scaleElement.height() / 2 + ((scaleElement.height() / 2) * window[areaId + "_scale"]) < gestureArea.height())) {
-                        y = gestureArea.height() - (scaleElement.height() / 2 + ((scaleElement.height() / 2) * window[areaId + "_scale"]));
-                        if (Math.abs(dy) > Math.abs(dx)) {
-                            window[areaId + "_scroll"] = true;
-                        }
-                    }
-                    if (
-                        window[areaId + "_scroll"] == false
-                        && ((y + scaleElement.height() / 2 + ((scaleElement.height() / 2) * window[areaId + "_scale"]) - gestureArea.height())) != 0
-                        && (y + scaleElement.height() / 2 - (scaleElement.height() / 2) * window[areaId + "_scale"]) != 0
-                    ) {
-                        scrollDisable();
-                    }
-                    var currentPage = getCurrentPage();
-                    if ((lastX != x || lastY != y) && (lastScrollTop == currentPage.scrollTop())) {
-                        gestureAreaElement.style.webkitTransform = gestureAreaElement.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-                        gestureAreaElement.setAttribute('data-x', x);
-                        gestureAreaElement.setAttribute('data-y', y);
-                    }
-                    lastScrollTop = currentPage.scrollTop();
-                }
-            }
-            var dragMoveAnimation = function () {
-                if (lastDragMoveDx != 0 && lastDragMoveDy != 0) {
-                    if (lastDragMoveDx > 0) {
-                        lastDragMoveDx -= lastDragMoveVx;
-                        if (lastDragMoveDx <= 0) {
-                            lastDragMoveDx = 0;
-                        }
-                    }
-                    if (lastDragMoveDy > 0) {
-                        lastDragMoveDy -= lastDragMoveVy;
-                        if (lastDragMoveDy <= 0) {
-                            lastDragMoveDy = 0;
-                        }
-                    }
-                    if (lastDragMoveDx < 0) {
-                        lastDragMoveDx -= lastDragMoveVx;
-                        if (lastDragMoveDx >= 0) {
-                            lastDragMoveDx = 0;
-                        }
-                    }
-                    if (lastDragMoveDy < 0) {
-                        lastDragMoveDy -= lastDragMoveVy;
-                        if (lastDragMoveDy >= 0) {
-                            lastDragMoveDy = 0;
-                        }
-                    }
-                    if (lastDragMoveDx == 0 && lastDragMoveDy == 0) {
-                        clearInterval(window.dragMoveAnimationTimer);
-                    }
-                    else {
-                        dragMove(lastDragMoveDx, lastDragMoveDy);
-                    }
-                }
-            }
-            var dragMoveListener = function (event) {
-                lastDragMoveTarget = event.target;
-                lastDragMoveDx = event.dx / 1;
-                lastDragMoveDy = event.dy / 1;
-                lastDragMoveVx = lastDragMoveDx / 20;
-                lastDragMoveVy = lastDragMoveDy / 20;
-                dragMove(event.dx, event.dy);
-            };
-            var lastTouchStartTick = 0;
-            $(gestureArea).on('touchstart', function (e) {
-                var now = new Date().getTime();
-                lastPageY = -10000;
-                lastPageX = -10000;
-                window.isTouching=true;
-                window.scrollByStepStop = true;
-                lastTouchStartTick = new Date().getTime();
-            });
-            $(gestureArea).on('touchmove', function (e) {
-                var _touch = e.originalEvent.changedTouches[0];
-                var dx = _touch.pageX - lastPageX;
-                var dy = _touch.pageY - lastPageY;
-                window.isTouching=true;
-                if (lastPageY != -10000 && e.originalEvent.targetTouches.length == 1 && e.originalEvent.changedTouches.length == 1) {
-                    if (window[areaId + "_scroll"]) {
-                        lastStep = dy;
-                        var currentPage = getCurrentPage();
-                        //$$(currentPage).scrollTop($$(currentPage).scrollTop()-dy, 0);
-                        scrollEnable();
-                    }
-                }
-                window[areaId + "_touches"]=e.originalEvent.touches.length;
-                lastPageY = _touch.pageY;
-                lastPageX = _touch.pageX;
-            });
-            $(gestureArea).on('touchend', function (e) {
-                //return;
-                window.isTouching=false;
-                var _touch = e.originalEvent.changedTouches[0];
-                var _x = _touch.pageX;
-                if (lastPageY != -10000 && e.originalEvent.changedTouches.length == 1 && e.originalEvent.targetTouches.length == 0) {
-                    if (window[areaId + "_scroll"]) {
-                        var currentPage = getCurrentPage();
-                        var step = lastStep / 1;
-                        //alert(step);
-                        if (step > 30) {
-                            step = 30;
-                        }
-                        if (step < -30) {
-                            step = -30;
-                        }
-                        //$$(currentPage).scrollByStep(step,step/40);
-                        scrollEnable();
-                    }
-                    else {
-                        clearInterval(window.dragMoveAnimationTimer);
-                        window.dragMoveAnimationTimer = setInterval(dragMoveAnimation, 1000 / 60);
-                    }
-                }
-            });
-            interactObj = interact(gestureAreaElement)
-                .gesturable({
-                    onstart: function (event) {
-                        window[areaId + "_scroll"] = false;
-                    },
-                    onmove: function (event) {
-                        // console.log("onmove");
-
-                        if(window[areaId + "_touches"]<=1)
-                        {
-                          return;
-                        }
-
-                        window[areaId + "_scale"] = window[areaId + "_scale"] * (1 + event.ds);
-                        if (window[areaId + "_scale"] < 1) {
-                            window[areaId + "_scale"] = 1;
-                        }
-                        if (window[areaId + "_scale"] > 2) {
-                            window[areaId + "_scale"] = 2;
-                        }
-                        scaleElementElement.style.webkitTransform = scaleElementElement.style.transform = 'scale(' + window[areaId + "_scale"] + ')';
-                        dragMoveListener(event);
-                        if (window[areaId + "_scale"] <= 1.1) {
-                            scrollEnable();
-                        }
-                        else {
-                            scrollDisable();
-                        }
-                        window[areaId + "_scroll"] = false;
-                    },
-                    onend: function (event) {
-                        window[areaId + "_scroll"] = false;
-                    },
-                    oncancel: function (event) {
-                        window[areaId + "_scroll"] = false;
-                    }
-                })
-                .draggable({
-                    onmove: dragMoveListener
-                });
-            //interactObj.options.drag.enabled=false;
-            // } catch (e) {
-            //     log(">>>>>>>>>>异常 initScaleAndMoveAction error catch e:" + e.toString())
-            // }
-        },
-        getOgranizationName: function (id) {
-            for (var i = 0; i < this.organizations.length; i++) {
-                if (this.organizations[i]["branchId"] === id) {
-                    return this.organizations[i]["branchName"];
-                }
-            }
-            return id;
-        },
-        getOrganizeId: function (name) {
-            for (var i = 0; i < this.organizations.length; i++) {
-                if (this.organizations[i]["branchName"] === name) {
-                    return this.organizations[i]["branchId"];
-                }
-            }
-            return name;
-        },
-        // getOrganizeId: function (name) {
-        //     log("organizations: " + JSON.stringify(this.organizations))
-        //     for (var key in this.organizations) {
-        //         if (this.organizations[key] === name) {
-        //             return key;
-        //         }
-        //     }
-        //     return name
-        // },
         dateFormat1: function (dateStr) {
             var result = "";
             if (dateStr === null || dateStr === undefined) {
@@ -563,117 +290,6 @@
                 result = dateStr.substring(0, 4) + '年' + dateStr.substring(4) + '月';
             } else if (dateStr.length > 6 && dateStr.length <= 8) {
                 result = dateStr.substring(0, 4) + '年' + dateStr.substring(4, 6) + '月' + dateStr.substring(6) + '日';
-            }
-            return result;
-        },
-        //将JSON数据转换为树状结构
-        convertTreeData: function (rows, attributes) {
-            var keyNodes = {}, parentKeyNodes = {};
-            for (var i = 0; i < rows.length; i++) {
-                var row = rows[i];
-                row.id = row[attributes.keyField];
-                row.parentId = row[attributes.parentKeyField];
-                row.text = row[attributes.textField];
-                row.qx = row[attributes.qx];
-                row.children = [];
-
-                keyNodes[row.id] = row;
-
-                if (parentKeyNodes[row.parentId]) {
-                    parentKeyNodes[row.parentId].push(row);
-                }
-                else {
-                    parentKeyNodes[row.parentId] = [row];
-                }
-
-                var children = parentKeyNodes[row.id];
-                if (children) {
-                    row.children = children;
-                }
-
-                var pNode = keyNodes[row.parentId];
-                if (pNode) {
-                    pNode.children.push(row);
-                }
-            }
-            return parentKeyNodes[attributes.rootKey];
-        },
-        //递归遍历树
-        loopJgQx: function (treeDatas) {
-            for (var i = 0; i < treeDatas.length; i++) {
-                var treeData = treeDatas[i];
-                log("treeData: " + JSON.stringify(treeData, null, 4));
-                if (treeData.qx == "1") {   // if(treeData.qx == "1"){
-                    log("name: " + treeData.branchName);
-                    return
-                }
-                if (treeData.children && treeData.children.length > 0) {
-                    log("treeData.children: " + JSON.stringify(treeData.children, null, 4));
-                    this.loopJgQx(treeData.children);
-                }
-            }
-        },
-        //非递归遍历树
-        loopJgQxTree: function (treeNodes) {
-            var havePermissionArray = [];
-            var stack = [];
-            if (!treeNodes || !treeNodes.length) return;
-            //先将第一层节点放入栈
-            for (var i = 0, len = treeNodes.length; i < len; i++) {
-                stack.push(treeNodes[i]);
-            }
-            var item;
-            while (stack.length) {
-                item = stack.shift();
-                //log("stack.shift(): " + JSON.stringify(stack.shift(),null,4));
-                if (item.qx == "1") {
-                    var havaPermission = {};
-                    havaPermission.pId = item.pId;
-                    havaPermission.branchId = item.branchId;
-                    havaPermission.branchName = item.branchName;
-                    havaPermission.qx = item.qx;
-                    havePermissionArray.push(havaPermission);
-                }
-                //如果该节点有子节点，继续添加进入栈底
-                if (item.children && item.children.length) {
-                    stack = stack.concat(item.children);
-                }
-            }
-            return havePermissionArray;
-        },
-        //转换pId,当元素的Pid没有作为BranchId出现时，将Pid转换为“”
-        convertPidNull: function (jsonData) {
-            var convertJsonData = jsonData;
-            for (var i = 0; i < jsonData.length; i++) {
-                // if( i + 1 < jsonData.length){
-                var flag = true;
-                for (var j = 0; j < jsonData.length; j++) {
-                    if (jsonData[i].pId == jsonData[j].branchId) {
-                        flag = false;
-                    }
-                }
-                if (flag) {
-                    convertJsonData[i].pId = '';
-                }
-            }
-            return convertJsonData;
-        },
-        createTreeData: function (data, pId) {
-            var result = [], temp;
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].pId == pId) {
-                    var obj = {
-                        "branchId": data[i].branchId,
-                        "branchName": data[i].branchName,
-                        "pId": data[i].pId,
-                        "qx": data[i].qx
-                    };
-                    temp = this.createTreeData(data, data[i].branchId);
-                    if (temp.length > 0) {
-                        obj.children = temp;
-                    }
-                    result.push(obj)
-                }
             }
             return result;
         },

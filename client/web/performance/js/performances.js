@@ -6,6 +6,9 @@
 
     Performances.prototype = {
         initPfm: function () {
+            var self = this;
+            self.showExample();
+
             var role = "1"; //测试数据
 
             this.mainView = myApp.addView('.view-main',{animatePages:false});
@@ -17,6 +20,16 @@
             }
             this.mainView.router.loadPage(url);
         },
+        showExample:function(){
+            //1.网络请求
+            var sendData = {};
+            NetManager.doHttpReq(Constants.ReqName.QueryAllUsers,sendData,function(jsonData){
+                myApp.alert("QueryAllUsers请求成功");
+            },function(jsonData){
+                myApp.alert("QueryAllUsers请求失败:");
+            });
+
+        }
     };
     window.Performances = new Performances();
 })();

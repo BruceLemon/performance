@@ -5,6 +5,7 @@ var myApp = new Framework7({
     modalButtonCancel:"取消"
 });
 
+
 var isFormalService = false;    //true：连接正式服；false：连接测试服
 var pad = false;            //是否是pad大屏
 var useLocalAddress = false;    //是否使用内网地址
@@ -157,6 +158,7 @@ if (isDebugMode) {
     console.log("------start main:" + countF);
 }
 
+//绩效测试网址
 //Android测试地址：http://120.26.55.65:8080/mbi/app/android/app-release.apk
 // 正式服APK    http://wjrcbmbi.mysticone.com:8000/android/app-release.apk
 // http://wjrcbmbi.mysticone.com:8000/app.apk
@@ -165,6 +167,7 @@ if (isDebugMode) {
 //网页地址 http://120.26.55.65:8080/mbi/app/web/index.html
 //统一登录账号 0995 277114
 //应用统一下载地址：https://www.wjrcb.com:6443/mbi/mbiDownload.html
+
 //1208 47127
 
 // 待办事项
