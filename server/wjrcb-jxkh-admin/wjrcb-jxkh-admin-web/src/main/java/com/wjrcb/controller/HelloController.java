@@ -33,4 +33,11 @@ public class HelloController {
 		List<MaUser> MaUserList = iMaUserService.queryAllUsers();
 		return JSONResult.ok(MaUserList);
 	}
+	
+	@PostMapping("queryUsersByDah")
+	@ResponseBody
+	public JSONResult queryUsersByDah(String dah) {
+		List<MaUser> MaUserList = iMaUserService.queryUsersByDah(dah);
+		return JSONResult.ok(MaUserList);
+	}
 }

@@ -2,7 +2,7 @@ package com.wjrcb.utils;
 
 /**
  * @Description: 自定义响应数据结构
- * 				这个类是提供给门户，ios，安卓，微信商城用的
+ * 				这个类是提供给门户，ios，安卓，用的
  * 				门户接受此类数据后需要使用本类的方法转换成对于的数据类型格式（类，或者list）
  * 				其他自行处理
  * 				200：表示成功
@@ -21,8 +21,6 @@ public class JSONResult {
 
     // 响应中的数据
     private Object data;
-    
-    private String ok;	// 不使用
 
     public static JSONResult build(Integer status, String msg, Object data) {
         return new JSONResult(status, msg, data);
@@ -95,13 +93,4 @@ public class JSONResult {
     public void setData(Object data) {
         this.data = data;
     }
-
-	public String getOk() {
-		return ok;
-	}
-
-	public void setOk(String ok) {
-		this.ok = ok;
-	}
-
 }
