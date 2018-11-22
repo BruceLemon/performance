@@ -12,9 +12,9 @@
             var role = "1"; //测试数据
 
             this.mainView = myApp.addView('.view-main',{animatePages:false});
-            var url = "content/page/role1.html?role="+role;
+            var url = "content/page/marketDetail.html?role="+role;
             if(role === "1"){   //角色1
-                Role1.initRole1();
+                MarketDetail.initMarketDetail();
             }else if (role === "2"){
                 Role2.initRole2();
             }

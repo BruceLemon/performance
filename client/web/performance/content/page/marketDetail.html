@@ -1,0 +1,253 @@
+<div data-page="marketDetail" class="page">
+    <!--<div class="navbar">-->
+        <!--<div class="navbar-inner">-->
+            <!--<div class="left">-->
+                <!--<a id="backId" href="#" class="back link" ><i class="icon icon-back"></i><span>返回</span></a>-->
+            <!--</div>-->
+            <!--<div id="main_navbar_title" class="center sliding">更多</div>-->
+            <!--<div class="right sliding">-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div id="mpaTab" class="subnavbar sliding">
+                <div class="buttons-row">
+                    <a id="tab_marketPerformance" href="#marketPerformance" class="button active tab-link"><img id="img_marketPerformance" style="margin-top:1px;margin-left:25px;width:25px;height:25px;float:left" src="images/icon/page/wode1.png" ><span style="margin-left:-25px;">我的绩效</span></a>
+                    <a id="tab_marketContract" href="#marketContract" class="button tab-link"><img id="img_marketContract" style="margin-top:1px;margin-left:25px;width:25px;height:25px;float:left" src="images/icon/page/jixiaoheyue2.png" ><span style="margin-left:-25px;">绩效合约</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding-bottom: 0px;background-color: white" class="page-content hide-bars-on-scroll">
+
+        <div class="tabs" style="background-color: white">
+            <div id="marketPerformance" class="page-content tab active pull-to-refresh-content">
+               <div id="blackbord" style="padding-top:20px;background-color: white">
+                <div style="box-shadow:2px 2px 5px #333333;background-color: #d64920;margin:0 auto;margin-bottom:30px;border-radius:10px;width:90%;height:175px;">
+                    <div style="font-size:15px;margin-left:10px;padding-top:15px;color:white"><span>截止时间：</span><span id="time">2018-04-23</span></div>
+                    <div style="font-size:15px;margin:10px auto;color:white;text-align: center">当年绩效</div>
+                    <div style="font-size:20px;font-weight:bold;margin:0 auto;color:white;text-align: center">6666.6万元</div>
+                    <div style="float:left;width:45%;font-size:15px;margin-left:25px;margin-top:10px;color:white"><span>上日绩效：</span><span id="lastDay" style="font-size:20px;font-weight: bold">+1.01</span></div>
+                    <div style="float:right;width:40%;font-size:15px;margin-top:10px;color:white"><span>排名：</span><span id="ranking" style="font-size:20px;font-weight: bold">11/100</span></div>
+                </div>
+                   <div style="background-color: #f0eff5;width: 100%;height: 12px"></div>
+               </div>
+                <div class="list-block accordion-list" style="margin-top: 0px;margin-bottom: 20px">
+                    <div class="accordion-item accordion-item-expanded">
+                        <div class="accordion-item-content">
+                            <div class="row no-gutter">
+                                <div class="col-100">
+                                    <div class="list-block list-block-search searchbar-found" style='margin: 0;background-color: #f6f6f7'>
+                                        <ul>
+                                            <li>
+                                                <div class="row no-gutter" style="">
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 50px">
+                                                            <div class="row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:18px;font-weight:bold;color: black;text-align: center"  type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="考核方案">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 50px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:18px;font-weight:bold;color: black;text-align: center"  type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="当月新增">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 50px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:18px;font-weight:bold;color: black;text-align: center"  type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="当年绩效">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background-color: #f0eff5;width: 100%;height: 2px"></div>
+                                            </li>
+                                            <li>
+                                                <div class="row no-gutter">
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class="row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:14px;color: #4e4e4e;text-align: center" type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="月度方案一">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:14px;color: #4e4e4e;text-align: center"  type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="66666元">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33" style="margin: auto auto">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <div class="col-100">
+                                                                        <a id="monthRanking" href="#" class="button"
+                                                                           style="color:#d64920;border:1px solid #d64920;margin:-10px auto;margin-top:10px;width:80%;background-color: rgba(214,73,32,0.13)">66666元</a>
+                                                                    </div>
+                                                                    <div class="col-100">
+                                                                    <input style="float:left;font-size:14px;color: #4e4e4e;text-align: center"  type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="排名：2/100">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background-color: #f0eff5;width: 100%;height: 2px"></div>
+                                            </li>
+                                            <li>
+                                                <div class="row no-gutter">
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class="row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:14px;color: #4e4e4e;text-align: center" type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="季度方案一">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:14px;color: #4e4e4e;text-align: center"  type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="66666元">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33" style="margin: auto auto">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <div class="col-100">
+                                                                        <a id="quarterRanking" href="#" class="button"
+                                                                           style="color:#d64920;border:1px solid #d64920;margin:-10px auto;margin-top:10px;width:80%;background-color: rgba(214,73,32,0.13)">66666元</a>
+                                                                    </div>
+                                                                    <div class="col-100">
+                                                                        <input style="float:left;font-size:14px;color: #4e4e4e;text-align: center"  type="text" readonly class="openPopover"
+                                                                               data-popover=".popover-purchase" value="排名：2/100">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background-color: #f0eff5;width: 100%;height: 2px"></div>
+                                            </li>
+                                            <li>
+                                                <div class="row no-gutter">
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class="row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:14px;color: #4e4e4e;text-align: center" type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="年度方案一">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <input style="font-size:14px;color: #4e4e4e;text-align: center"  type="text" readonly class="openPopover"
+                                                                           data-popover=".popover-purchase" value="66666元">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33" style="margin: auto auto">
+                                                        <div class="item-content " style="min-height: 70px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <div class="col-100">
+                                                                        <a id="yearRanking" href="#" class="button"
+                                                                           style="color:#d64920;border:1px solid #d64920;margin:-10px auto;margin-top:10px;width:80%;background-color: rgba(214,73,32,0.13)">66666元</a>
+                                                                    </div>
+                                                                    <div class="col-100">
+                                                                        <input style="float:left;font-size:14px;color: #4e4e4e;text-align: center"  type="text" readonly class="openPopover"
+                                                                               data-popover=".popover-purchase" value="排名：2/100">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background-color: #f0eff5;width: 100%;height: 2px"></div>
+                                            </li>
+                                            <li>
+                                                <div class="row no-gutter" style="">
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 50px">
+                                                            <div class="row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <img style="float:left;margin-left:10px;width:20px;height:20px;float:left" src="images/icon/page/heji.png" >
+                                                                    &nbsp;<span>合计</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 50px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <img style="float:left;margin-left:10px;width:20px;height:20px;float:left" src="images/icon/page/dangyue.png" >
+                                                                    &nbsp;<span>200000元</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-33">
+                                                        <div class="item-content " style="min-height: 50px">
+                                                            <div class=" row no-gutter ">
+                                                                <div class="item-input">
+                                                                    <img style="float:left;margin-left:10px;width:20px;height:20px;float:left" src="images/icon/page/dangnian.png" >
+                                                                    &nbsp;<span>300000</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="marketContract" class="page-content tab pull-to-refresh-content">
+                <div style="background-color: #f0eff5;width: 100%;height: 10px"></div>
+                <p>营销人员绩效合约界面</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -605,5 +605,10 @@ ul#imd_content::after {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.chart_Single_curve{
+    width:95%;
+    height: 35%;
+    text-align: center;
 
+}
 
