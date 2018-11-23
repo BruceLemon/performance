@@ -22,13 +22,12 @@
         },
         showExample:function(){
             //1.网络请求
-            var sendData = {};
-            NetManager.doHttpReq(Constants.ReqName.QueryAllUsers,sendData,function(jsonData){
-                myApp.alert("QueryAllUsers请求成功");
+            var sendData = {dah:"1093"};
+            NetManager.doHttpReq(Constants.ReqName.QueryUsersByDah,sendData,function(jsonData){
+                myApp.alert("QueryUsersByDah:success");
             },function(jsonData){
-                myApp.alert("QueryAllUsers请求失败:");
+                myApp.alert("QueryUsersByDah:fail");
             });
-
         }
     };
     window.Performances = new Performances();

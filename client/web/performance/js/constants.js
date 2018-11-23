@@ -4,7 +4,8 @@
     function Constants() {
         //应用存储名称
         this.ReqName = {
-            QueryAllUsers: "queryAllUsers"
+            QueryAllUsers: "queryAllUsers",
+            QueryUsersByDah:"queryUsersByDah"
         };
         Object.freeze(this.ReqName);
     }

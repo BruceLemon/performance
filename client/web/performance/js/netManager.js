@@ -47,14 +47,14 @@
                 data : jsonData,
                 url : url,
                 success : function(jsonData){
-                    log("msg"+JSON.stringify(jsonData, null, 4));
+                    log("reqName:"+reqName+" msg"+JSON.stringify(jsonData, null, 4));
 
                     if (jsonData.status === 200) {
                         if(_.isFunction(successCb)){
                             successCb(jsonData);
                         }
                     } else {
-                        error("请求失败：reqName:"+reqName+" status:"+jsonData.status+" msg:"+jsonData.msg+" ok:"+jsonData.ok);
+                        error("请求失败：reqName:"+reqName+" status:"+jsonData.status+" msg:"+jsonData.msg);
                         if(_.isFunction(failCb)){
                             failCb(jsonData);
                         }
