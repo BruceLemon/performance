@@ -8,7 +8,7 @@
         initPfm: function () {
             var self = this;
             self.showExample();
-
+            self.clickEvent();
             var role = "2"; //测试数据
 
             this.mainView = myApp.addView('.view-main',{animatePages:false});
@@ -29,7 +29,13 @@
             },function(jsonData){
                 myApp.alert("QueryUsersByDah:fail");
             });
-        }
+        },
+        clickEvent: function (page) {
+            $(document).off('click', "#lsjx").on('click', "#lsjx", function () {
+                this.mainView = myApp.addView('.view-main',{animatePages:false});
+                this.mainView.router.loadPage("content/page/historicalperformance.html");
+            });
+        },
     };
     window.Performances = new Performances();
 })();

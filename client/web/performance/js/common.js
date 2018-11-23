@@ -173,6 +173,14 @@
             })
 
         },
+        getOgranizationName: function (id) {
+            for (var i = 0; i < this.organizations.length; i++) {
+                if (this.organizations[i]["branchId"] === id) {
+                    return this.organizations[i]["branchName"];
+                }
+            }
+            return id;
+        },
         removeCommonEvent: function (dom, name) {
             if (this.arr && this.arr[dom]) {
                 var len = this.arr[dom].length;

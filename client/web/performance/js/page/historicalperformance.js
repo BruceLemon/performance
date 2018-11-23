@@ -1,18 +1,24 @@
 (function () {
     "use strict";
-    function Historicalperformance() {
+    function historicalperformance() {
         this.init();
     }
 
-    Historicalperformance.prototype = {
+    historicalperformance.prototype = {
         init: function () {
+
+
             var self = this;
 
-            myApp.onPageAfterAnimation('Historicalperformance', function (page) {
-                log("start Historicalperformance");
+            myApp.onPageAfterAnimation('historicalperformance', function (page) {
+                log("start historicalperformance");
                 self.Performance_k();
                 self.timeinit();
                 $('#calendar-default').val("2017-11-11");
+                $("#main_view").html("历史绩效");
+
+                $("#lsjx").html("");
+
             });
 
         },
@@ -27,6 +33,6 @@
         },
 
     };
-    window.Historicalperformance = new Historicalperformance();
+    window.historicalperformance = new historicalperformance();
 })();
 
