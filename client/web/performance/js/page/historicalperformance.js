@@ -24,7 +24,8 @@
             var calendarDefault = myApp.calendar({
                 input: '#calendar-default',
             });
-        }
+        },
+
     };
     window.Historicalperformance = new Historicalperformance();
 })();
