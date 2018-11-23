@@ -158,7 +158,7 @@ if (isDebugMode) {
     console.log("------start main:" + countF);
 }
 
-//绩效测试网址
+//绩效测试网址   http://wjrcbmbi.mysticone.com:8000/release/performance/performances.html
 //Android测试地址：http://120.26.55.65:8080/mbi/app/android/app-release.apk
 // 正式服APK    http://wjrcbmbi.mysticone.com:8000/android/app-release.apk
 // http://wjrcbmbi.mysticone.com:8000/app.apk

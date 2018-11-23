@@ -20,7 +20,7 @@
             }else if (role === "2"){
                 Role2.initRole2();
             }
-            this.mainView.router.loadPage(url);
+            this.mainView.router.loadPage({url:url,reload:true});
         },
         showExample:function(){
             //1.网络请求
