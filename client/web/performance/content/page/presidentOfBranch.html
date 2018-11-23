@@ -1,78 +1,46 @@
 <div data-page="presidentOfBranch" class="page">
     <div class="page-content">
-        <!--<div class="toolbar tabbar tabbar-scrollable">-->
-            <!--<div class="toolbar-inner">-->
-                <!--<a id="presidentTabMine" href="#tabMine" class="tab-link active">-->
-                    <!--<div class="col-auto">-->
-                        <!--<img id="imgMinePerformance" style="margin-top:1px;margin-left:25px;width:25px;height:25px;float:left" src="images/icon/page/wode1.png"/>-->
-                        <!--<span>我的绩效</span>-->
-                    <!--</div>-->
-                <!--</a>-->
-                <!--<a id="presidentTabMembers1" href="#tabMembers1" class="tab-link">-->
-                    <!--<div class="col-auto">-->
-                        <!--<img id="imgMer1Performance" style="margin-top:1px;margin-left:25px;width:25px;height:25px;float:left" src="images/icon/page/gongsi2.png" >-->
-                        <!--<span>公司人员绩效</span>-->
-                    <!--</div>-->
-                <!--</a>-->
-                <!--<a id="presidentTabMembers2" href="#tabMembers2" class="tab-link">-->
-                    <!--<div class="col-auto">-->
-                        <!--<img id="imgMer2Performance" style="margin-top:1px;margin-left:25px;width:25px;height:25px;float:left" src="images/icon/page/lingshou2.png" >-->
-                        <!--<span>零售人员绩效</span>-->
-                    <!--</div>-->
-                <!--</a>-->
-            <!--</div>-->
-        <!--</div>-->
-    <div class="navbar">
-        <div class="navbar-inner">
-            <!--<div class="left">-->
+        <!--导航栏-->
+        <div class="navbar" style="margin-top: 5px;margin-bottom: 0px">
+            <div class="navbar-inner">
                 <a id="presidentTabMine" href="#tabMine" class="tab-link active">
-                    <!--<div class="col-auto">-->
-                        <img id="imgMinePerformance" style="margin-top:1px;width:25px;height:25px;float:left" src="images/icon/page/wode1.png"/>
-                        <span id="textMinePerformance" style="color: #fe6600">我的绩效</span>
-                    <!--</div>-->
+                    <img id="imgMinePerformance" style="margin-top:3px;width:16px;height:16px;float:left" src="images/icon/page/wode1.png"/>
+                    <span id="textMinePerformance" style="margin-left:5px;font-size: 16px;color: #fe6600">我的绩效</span>
                 </a>
-            <!--</div>-->
-            <!--<div class="center">-->
                 <a id="presidentTabMembers1" href="#tabMembers1" class="tab-link">
-                <!--<div class="col-auto">-->
-                    <img id="imgMer1Performance" style="margin-top:1px;width:25px;height:25px;float:left" src="images/icon/page/gongsi2.png" >
-                    <span id="textMer1Performance" style="color: #3d4954">公司人员绩效</span>
-                <!--</div>-->
-            </a>
-            <!--</div>-->
-            <!--<div class="right">-->
-                <a id="presidentTabMembers2" href="#tabMembers2" class="tab-link">
-                    <!--<div class="col-auto">-->
-                        <img id="imgMer2Performance" style="margin-top:1px;width:25px;height:25px;float:left" src="images/icon/page/lingshou2.png" >
-                        <span id="textMer2Performance" style="color: #3d4954">零售人员绩效</span>
-                    <!--</div>-->
+                    <img id="imgMer1Performance" style="margin-top:3px;width:16px;height:16px;float:left" src="images/icon/page/gongsi2.png">
+                    <span id="textMer1Performance" style="margin-left:5px;font-size: 16px;color: #3d4954">公司人员绩效</span>
                 </a>
-            <!--</div>-->
+                <a id="presidentTabMembers2" href="#tabMembers2" class="tab-link">
+                    <img id="imgMer2Performance" style="margin-top:3px;width:16px;height:16px;float:left" src="images/icon/page/lingshou2.png">
+                    <span id="textMer2Performance" style="margin-left:5px;font-size: 16px;color: #3d4954">零售人员绩效</span>
+                </a>
+            </div>
+            <!--下标线-->
+            <img id="underline"src="images/icon/page/xuan.png" style="margin-top:40px;margin-left:6px;width:88px;height:10px"/>
         </div>
-    </div>
-    <div class="tabs">
-            <div id="tabMine" class="tab active">
-                <div class="content-block" style="margin-top: 5px;margin-bottom: 5px;background-image:url(images/icon/page/di2.png); background-position: center; background-size: cover; height: 40vw">
-                    <div style="font-size:15px;margin-left:10px;padding-top:15px;color:white"><span>截止时间：</span><span id="deadline">2018-04-23</span></div>
-                    <div style="font-size:15px;margin:10px auto;color:white;text-align: center">绩效合约</div>
-                    <div style="font-size:20px;font-weight:bold;margin:0 auto;color:white;text-align: center">88分</div>
-                    <div style="float:left;width:45%;font-size:15px;margin-left:25px;margin-top:10px;color:white"><span>比上月 </span><span id="compare" style="font-size:20px;font-weight: bold">+1.01</span></div>
-                    <div style="float:right;width:40%;font-size:15px;margin-top:10px;color:white"><span>排名 </span><span id="ranking" style="font-size:20px;font-weight: bold">11/100</span></div>
-                </div>
-            </div>
-            <div id="tabMembers1" class="tab">
-                <div class="content-block" style="margin-top: 5px;margin-bottom: 5px;background-image:url(images/icon/page/di2.png); background-position: center; background-size: cover; height: 40vw">
-                     <p>This is tab 2 content</p>
-                     ...
-                </div>
-            </div>
-            <div id="tabMembers2" class="tab">
-                <div class="content-block" style="margin-top: 5px;margin-bottom: 5px;background-image:url(images/icon/page/di2.png); background-position: center; background-size: cover; height: 40vw">
-                    <p>This is tab 3 content</p>
-                    ...
+
+        <!--绩效Table-->
+        <div class="content-block" style="margin-top: 0px;margin-bottom: 5px;">
+            <div class="content-block-inner"style="background-image:url(images/icon/page/di2.png); background-position: center; background-size: cover; height: 40vw">
+                <div class="tabs">
+                    <div id="tabMine" class="tab active">
+                        <div style="font-size:15px;margin-left:18px;padding-top:15px;color:white"><span>截止时间：</span><span id="deadline">2018-04-23</span></div>
+                        <div style="font-size:15px;margin:10px auto;color:white;text-align: center">绩效合约</div>
+                        <div style="font-size:20px;font-weight:bold;margin:0 auto;color:white;text-align: center">88分</div>
+                        <div style="float:left;width:45%;font-size:15px;margin-left:25px;margin-top:10px;color:white"><span>比上月 </span><span id="compare" style="font-size:20px;font-weight: bold">+1.01</span></div>
+                        <div style="float:right;width:40%;font-size:15px;margin-top:10px;color:white"><span>排名 </span><span id="ranking" style="font-size:20px;font-weight: bold">11/100</span></div>
+                    </div>
+                    <div id="tabMembers1" class="tab">
+                        <p style="font-size:15px;margin-left:18px;padding-top:15px;">This is tab 2 content</p>
+                    </div>
+                    <div id="tabMembers2" class="tab">
+                        <p style="font-size:15px;margin-left:18px;padding-top:15px;">This is tab 3 content</p>
+                    </div>
                 </div>
             </div>
         </div>
+
         <!--EVA-->
         <div class="list-block" style="margin-top: 5px;margin-bottom: 5px">
             <ul>
@@ -87,6 +55,7 @@
                 </li>
             </ul>
         </div>
+
         <!--绩效合约-->
         <div class="list-block" style="margin-top: 5px;margin-bottom: 5px">
             <ul>
@@ -101,21 +70,22 @@
                 </li>
             </ul>
         </div>
+
         <!--业务发展-->
         <div class="list-block" style="margin-top: 5px;margin-bottom: 5px">
             <ul>
                 <li class="item-content">
                     <div class="item-inner">
                         <div class="item-input">
-                        <img src="images/icon/page/biao1.png" style="width:5px;height:15px;"/>
-                        <span style="font-size: 20px;font-weight: bold">业务发展(</span>
-                        <span id="developmentpercent" style="font-weight: bold">55%</span>
-                        <span style="font-weight: bold">)</span>
+                            <img src="images/icon/page/biao1.png" style="width:5px;height:15px;"/>
+                            <span style="font-size: 20px;font-weight: bold">业务发展(</span>
+                            <span id="developmentpercent" style="font-weight: bold">55%</span>
+                            <span style="font-weight: bold">)</span>
                         </div>
                     </div>
                 </li>
                 <li class="item-content">
-                    <div class="item-inner" >
+                    <div class="item-inner">
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">内容(基本分)</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">目标值</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">完成值</span></div>
@@ -171,7 +141,7 @@
                     </div>
                 </li>
                 <li class="item-content">
-                    <div class="item-inner" >
+                    <div class="item-inner">
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">内容(基本分)</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">目标值</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">完成值</span></div>
@@ -219,7 +189,7 @@
                     </div>
                 </li>
                 <li class="item-content">
-                    <div class="item-inner" >
+                    <div class="item-inner">
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">内容(基本分)</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">目标值</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">完成值</span></div>
@@ -267,7 +237,7 @@
                     </div>
                 </li>
                 <li class="item-content">
-                    <div class="item-inner" >
+                    <div class="item-inner">
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">内容(基本分)</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">目标值</span></div>
                         <div class="item-input"><span style="font-size: 18px;font-weight: bold">完成值</span></div>
