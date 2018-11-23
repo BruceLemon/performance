@@ -19,6 +19,15 @@ public class MaUserServiceImpl implements IMaUserService {
 	public List<MaUser> queryAllUsers() {
 		MaUserExample example = new MaUserExample();
 		example.setOrderByClause("org_id");
+		example.createCriteria().andUserNameLike("黄%");
+		return userMapper.selectByExample(example);
+	}
+
+	@Override
+	public List<MaUser> queryUsersByDah(String dah) {
+		MaUserExample example = new MaUserExample();
+		example.setOrderByClause("org_id");
+		example.createCriteria().andUserIdEqualTo(dah);
 		return userMapper.selectByExample(example);
 	}
 
