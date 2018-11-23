@@ -9,16 +9,15 @@
             var self = this;
             self.showExample();
 
-            var role = "1"; //测试数据
+            var role = "2"; //测试数据
 
             this.mainView = myApp.addView('.view-main',{animatePages:false});
             var url = "content/page/marketDetail.html?role="+role;
-            // var url = "content/page/presidentOfBranch.html?role="+role;
             if(role === "1"){   //角色1
                 MarketDetail.initMarketDetail();
-                // PresidentOfBranch.initPresidentOfBranch();
             }else if (role === "2"){
-                Role2.initRole2();
+                url = "content/page/presidentOfBranch.html?role="+role;
+                PresidentOfBranch.initPresidentOfBranch();
             }
             this.mainView.router.loadPage(url);
         },
