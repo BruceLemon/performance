@@ -41,11 +41,16 @@
             //  ],
             //     "ok": null
             // }
+
             $.ajax({
                 type : 'POST',
                 dataType: 'json',
                 data : jsonData,
                 url : url,
+                xhrFields: {
+                    withCredentials: true    //允许带上凭据
+                },
+                crossDomain: true,
                 success : function(jsonData){
                     log("reqName:"+reqName+" msg"+JSON.stringify(jsonData, null, 4));
 

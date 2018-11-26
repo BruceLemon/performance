@@ -4,6 +4,7 @@
     function Constants() {
         //应用存储名称
         this.ReqName = {
+            Login:"login",
             QueryAllUsers: "queryAllUsers",
             QueryUsersByDah:"queryUsersByDah"
         };

@@ -22,13 +22,30 @@
             this.mainView.router.loadPage({url:url,reload:true});
         },
         showExample:function(){
-            //1.网络请求
+            // //1.网络请求
             var sendData = {dah:"1093"};
             NetManager.doHttpReq(Constants.ReqName.QueryUsersByDah,sendData,function(jsonData){
                 myApp.alert("QueryUsersByDah:success");
             },function(jsonData){
                 myApp.alert("QueryUsersByDah:fail");
             });
+
+            //2.测试登录
+            // var sendData = {dah:"1093"};
+            // NetManager.doHttpReq(Constants.ReqName.Login,sendData,function(jsonData){
+            //     myApp.alert("Login:success");
+            //
+            //     var sendData = {};
+            //     NetManager.doHttpReq(Constants.ReqName.QueryUsersByDah,sendData,function(jsonData){
+            //         myApp.alert("QueryUsersByDah:success");
+            //     },function(jsonData){
+            //         myApp.alert("QueryUsersByDah:fail");
+            //     });
+            //
+            // },function(jsonData){
+            //     myApp.alert("Login:fail");
+            // });
+
         },
         clickEvent: function (page) {
             $(document).off('click', "#lsjx").on('click', "#lsjx", function () {
