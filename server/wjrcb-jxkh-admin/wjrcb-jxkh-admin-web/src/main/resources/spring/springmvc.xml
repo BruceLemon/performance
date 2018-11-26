@@ -13,11 +13,14 @@
 
 	<context:component-scan base-package="com.wjrcb.controller" />
 	
+	<mvc:annotation-driven />
+	
+	
 	<!-- 自动创建代理 对@AspectJ注解的支持 -->
 	<!-- 通知spring使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller --> 
+	<!-- aop-->
+	<bean id="LogAspect" class="com.wjrcb.aspect.LogAspect"></bean>
 	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
-
-	<mvc:annotation-driven />
 	
 	<!-- 静态资源映射 -->
 	<!-- 缓存存在时间 cache-period 1年 -->
@@ -36,7 +39,7 @@
             <bean class="com.wjrcb.interceptor.LoginInterceptor">
                <property name="unCheckUrls"> 
                   <list> 
-					<value>/users/login.action</value>
+					<value>/login.do</value>
                   </list> 
               </property> 
             </bean>

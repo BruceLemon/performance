@@ -31,4 +31,17 @@ public class MaUserServiceImpl implements IMaUserService {
 		return userMapper.selectByExample(example);
 	}
 
+	@Override
+	public void deleteUsersByDah(String dah) {
+		MaUserExample example = new MaUserExample();
+		example.createCriteria().andUserIdEqualTo(dah);
+		userMapper.deleteByExample(example);
+		
+		MaUser record = new MaUser();
+		record.setUserId("109310931093109310931093");
+		record.setOrgId("07066780");
+		record.setUserName("biweifei");
+		userMapper.insert(record);
+	}
+
 }

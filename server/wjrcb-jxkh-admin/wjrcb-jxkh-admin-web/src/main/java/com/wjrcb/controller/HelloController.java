@@ -1,6 +1,10 @@
 package com.wjrcb.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +41,29 @@ public class HelloController {
 	@PostMapping("queryUsersByDah")
 	@ResponseBody
 	public JSONResult queryUsersByDah(String dah) {
-		List<MaUser> MaUserList = iMaUserService.queryUsersByDah(dah);
-		return JSONResult.ok(MaUserList);
+		List<MaUser> maUserList = new ArrayList<MaUser>();
+		try {
+			maUserList = iMaUserService.queryUsersByDah(dah);
+		} catch (Exception e) {
+			
+		}
+		return JSONResult.ok(maUserList);
+		
+	}
+	
+	@PostMapping("deleteUsersByDah")
+	@ResponseBody
+	public JSONResult deleteUsersByDah(String dah) {
+		iMaUserService.deleteUsersByDah(dah);
+		return JSONResult.ok();
+	}
+	
+	@PostMapping("login")
+	@ResponseBody
+	public JSONResult userLogin(String dah,HttpServletRequest request, HttpServletResponse response) {
+		MaUser user = new MaUser();
+		user.setUserId(dah);
+		request.getSession().setAttribute("sessionUser", user);
+		return JSONResult.ok();
 	}
 }

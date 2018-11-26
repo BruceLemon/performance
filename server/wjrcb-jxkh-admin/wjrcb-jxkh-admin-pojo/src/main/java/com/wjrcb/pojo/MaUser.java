@@ -3,7 +3,7 @@ package com.wjrcb.pojo;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class MaUser {
+public class MaUser extends BaseEntity{
     private String userId;
 
     private String userName;

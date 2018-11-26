@@ -9,4 +9,6 @@ public interface IMaUserService {
 	public List<MaUser> queryAllUsers();
 	
 	public List<MaUser> queryUsersByDah(String dah);
+	
+	public void deleteUsersByDah(String dah);
 }
